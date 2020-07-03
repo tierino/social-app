@@ -1,0 +1,35 @@
+export const toggleReaction = (id, user, reaction, toggleType) => async (
+  dispatch
+) => {
+  const getResponse = await posts.get(`/posts/${id}`);
+  let response;
+
+  if (reaction == "like") {
+    if (toggleType == "on") {
+      // LIKE
+      response = await posts.patch(`/posts/${id}`, {
+        likedBy: [...getResponse.data.likedBy, user],
+        dislikedBy: getResponse.data.dislikedBy.filter((like) => like !== user),
+      });
+    } else {
+      // UN-LIKE
+      response = await posts.patch(`/posts/${id}`, {
+        likedBy: getResponse.data.likedBy.filter((like) => like !== user),
+      });
+    }
+  } else {
+    if (toggleType == "on") {
+      // DISLIKE
+      response = await posts.patch(`/posts/${id}`, {
+        dislikedBy: [...getResponse.data.dislikedBy, user],
+        likedBy: getResponse.data.likedBy.filter((like) => like !== user),
+      });
+    } else {
+      // UN-DISLIKE
+      response = await posts.patch(`/posts/${id}`, {
+        dislikedBy: getResponse.data.dislikedBy.filter((like) => like !== user),
+      });
+    }
+  }
+  dispatch({ type: TOGGLE_REACTION, payload: response.data });
+};
