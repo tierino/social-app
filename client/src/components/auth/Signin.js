@@ -43,6 +43,16 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  textField: {
+    "& label.Mui-focused": {
+      color: "#4791db",
+    },
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: "#4791db",
+      },
+    },
+  },
 }));
 
 // Field renderer so Material-UI works with Redux Form
@@ -95,6 +105,7 @@ function Signin(props) {
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <Field
+            className={classes.textField}
             name="username"
             component={renderTextField}
             label="Username"
@@ -106,6 +117,7 @@ function Signin(props) {
             required
           />
           <Field
+            className={classes.textField}
             name="password"
             component={renderTextField}
             label="Password"
@@ -120,7 +132,11 @@ function Signin(props) {
             {props.errorMessage}
           </Typography>
           <Typography variant="subtitle1">
-            Don't have an account? Create one <Link href="/signup">here</Link>.
+            Don't have an account? Create one{" "}
+            <Link href="/signup" style={{ color: "#4791db" }}>
+              here
+            </Link>
+            .
           </Typography>
           <Button type="submit" className={classes.submit} variant="contained">
             Sign in
