@@ -21,7 +21,7 @@ import Container from "@material-ui/core/Container";
 
 const MAX_UN_LEN = 20;
 const MIN_PW_LEN = 8;
-const MAX_PW_LEN = 25;
+const MAX_PW_LEN = 100;
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -109,7 +109,7 @@ function Signin(props) {
             name="username"
             component={renderTextField}
             label="Username"
-            autoComplete="None"
+            autoComplete="off"
             inputProps={{
               maxLength: MAX_UN_LEN,
             }}

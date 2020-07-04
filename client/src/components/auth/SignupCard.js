@@ -20,7 +20,7 @@ import { AUTH_ERROR } from "../../actions/types";
 
 const MAX_UN_LEN = 20;
 const MIN_PW_LEN = 8;
-const MAX_PW_LEN = 25;
+const MAX_PW_LEN = 100;
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -133,7 +133,7 @@ function SignupCard(props) {
             name="username"
             component={renderTextField}
             label="Username"
-            autoComplete="None"
+            autoComplete="off"
             helperText={usernameError}
             inputProps={{
               maxLength: MAX_UN_LEN,
