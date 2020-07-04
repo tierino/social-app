@@ -57,10 +57,10 @@ function Home(props) {
   return (
     <div>
       <Box className={classes.box}>
-        <Octopus
+        {/* <Octopus
           className={classes.octopusIcon}
           style={{ width: "80px", height: "80px" }}
-        />
+        /> */}
         <Typography className={classes.title} variant="h5">
           Home
         </Typography>

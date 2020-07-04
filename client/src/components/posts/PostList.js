@@ -77,7 +77,9 @@ function areEqual(prevProps, nextProps) {
 function PostList(props) {
   const classes = useStyles();
 
-  console.log("yeaasdfasdf");
+  if (!props.posts) {
+    return <p>LOADING</p>;
+  }
 
   return props.posts
     .slice(0)
