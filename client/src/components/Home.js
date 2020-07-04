@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
   octopusIcon: {
     marginTop: theme.spacing(3),
+    width: "80px",
+    height: "80px",
   },
   container: {
     paddingTop: theme.spacing(3),
@@ -39,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
   box: {
     display: "flex",
     flexDirection: "column",
-    height: "calc(100vh - 72px)",
     alignItems: "center",
   },
   divider: {
@@ -57,10 +58,7 @@ function Home(props) {
   return (
     <div>
       <Box className={classes.box}>
-        {/* <Octopus
-          className={classes.octopusIcon}
-          style={{ width: "80px", height: "80px" }}
-        /> */}
+        <Octopus className={classes.octopusIcon} />
         <Typography className={classes.title} variant="h5">
           Home
         </Typography>

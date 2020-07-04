@@ -11,60 +11,13 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
-import ThumbUpAltSharpIcon from "@material-ui/icons/ThumbUpAltSharp";
-import ThumbDownAltSharpIcon from "@material-ui/icons/ThumbDownAltSharp";
-import ChatBubbleSharpIcon from "@material-ui/icons/ChatBubbleSharp";
-import DeleteSharpIcon from "@material-ui/icons/DeleteSharp";
-import EditSharpIcon from "@material-ui/icons/EditSharp";
-import Divider from "@material-ui/core/Divider";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
-  content: {
-    flexGrow: 1,
-    overflow: "auto",
-  },
-  container: {
-    marginTop: theme.spacing(4),
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-    alignItems: "center",
-  },
-  secondContainer: {
+  loaderContainer: {
     alignItems: "center",
     textAlign: "center",
-  },
-  paper: {
-    justifyContent: "center",
-    padding: theme.spacing(2),
-    flexDirection: "column",
-    display: "flex",
-  },
-  fixedHeight: {
-    height: 480,
-  },
-  box: {
-    display: "flex",
-    flexDirection: "column",
-    height: "calc(100vh - 72px)",
-    alignItems: "center",
-  },
-  card: {
-    marginTop: theme.spacing(2),
-  },
-  username: {
-    marginBottom: "12px",
-  },
-  adminButton: {
-    marginLeft: "auto",
-  },
-  postContent: {
-    wordWrap: "break-word",
+    paddingTop: theme.spacing(2),
   },
 }));
 
@@ -77,8 +30,12 @@ function areEqual(prevProps, nextProps) {
 function PostList(props) {
   const classes = useStyles();
 
-  if (!props.posts) {
-    return <p>LOADING</p>;
+  if (props.posts.length === 0) {
+    return (
+      <Container className={classes.loaderContainer}>
+        <CircularProgress />
+      </Container>
+    );
   }
 
   return props.posts

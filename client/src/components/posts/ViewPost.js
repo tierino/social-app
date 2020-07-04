@@ -127,7 +127,7 @@ function ViewPost(props) {
     if (!props.post) {
       return (
         <Container className={classes.loaderContainer}>
-          <CircularProgress style={{ textAlign: "center" }} />
+          <CircularProgress />
         </Container>
       );
     }
