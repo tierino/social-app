@@ -79,6 +79,7 @@ export const signin = (formProps, callback) => async (dispatch) => {
     // Redirects user to '/home'
     callback();
   } catch (e) {
+    console.log(e);
     dispatch({ type: AUTH_ERROR, payload: "Invalid username or password." });
   }
 };
