@@ -96,7 +96,10 @@ function FocusedPost(props) {
   /* Delete dialog here as well */
 
   const renderAdmin = () => {
-    if (props.currentUserId === props.post.authorId) {
+    if (
+      props.currentUserId === props.post.authorId ||
+      props.currentUserId === "7bcce630-d4a4-46c2-9330-c058d4c0ea76" // Admin account uid
+    ) {
       return (
         <div>
           <Tooltip title="Delete this post">
