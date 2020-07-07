@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
   menuTitle: {
     textAlign: "center",
     paddingBottom: "6px",
-    marginLeft: "8px",
-    marginRight: "8px",
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
     "&:focus": {
       outline: "0px",
     },
