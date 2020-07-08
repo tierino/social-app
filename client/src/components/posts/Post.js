@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     marginRight: theme.spacing(2),
-    backgroundColor: "#ff8a80",
+    color: "white",
   },
   adminButton: {
     marginLeft: theme.spacing(1),

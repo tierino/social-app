@@ -30,6 +30,8 @@ function areEqual(prevProps, nextProps) {
 function PostList(props) {
   const classes = useStyles();
 
+  console.log(props.posts);
+
   if (props.posts.length === 0) {
     return (
       <Container className={classes.loaderContainer}>

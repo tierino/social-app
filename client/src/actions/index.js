@@ -75,7 +75,7 @@ export const signin = (formProps, callback) => async (dispatch) => {
     // Store token in localStorage (persisting logged-in state)
     localStorage.setItem("token", response.data.token);
     localStorage.setItem("id", response.data.userId);
-    localStorage.setItem("currentUser", formProps.username);
+    localStorage.setItem("username", formProps.username);
     // Redirects user to '/home'
     callback();
   } catch (e) {

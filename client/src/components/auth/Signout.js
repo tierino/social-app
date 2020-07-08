@@ -26,7 +26,7 @@ function Signout(props) {
   return (
     <Container maxWidth="sm" className={classes.container}>
       <Typography variant="h4">You have been signed out.</Typography>
-      <Goodbye width={400} height={400} />
+      <Goodbye width={400} height={400} style={{ pointerEvents: "none" }} />
     </Container>
   );
 }

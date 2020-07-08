@@ -15,14 +15,9 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import IconButton from "@material-ui/core/IconButton";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+import SvgIcon from "@material-ui/core/SvgIcon";
 import Divider from "@material-ui/core/Divider";
+import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -30,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
   octopusIcon: {
     marginTop: theme.spacing(3),
-    width: "80px",
-    height: "80px",
+    width: "40px",
+    height: "40px",
   },
   container: {
     paddingTop: theme.spacing(3),
@@ -58,7 +53,7 @@ function Home(props) {
   return (
     <div>
       <Box className={classes.box}>
-        <Octopus className={classes.octopusIcon} />
+        <HomeIcon className={classes.octopusIcon} />
         <Typography className={classes.title} variant="h5">
           Home
         </Typography>

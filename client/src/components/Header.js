@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import AccountMenu from "./AccountMenu";
 import { ReactComponent as Octopus } from "../images/octopus.svg";
+import ScrollToTop from "./ScrollToTop";
 
 import clsx from "clsx";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -95,14 +96,10 @@ function Header(props) {
             to="/home"
             style={{ textDecoration: "inherit", color: "inherit" }}
           >
-            <Button className={classes.menuButton} variant="outlined">
-              Feed
-            </Button>
+            <Button className={classes.menuButton}>Feed</Button>
           </Link>
           <Link to="/signout" style={{ textDecoration: "inherit" }}>
-            <Button variant="outlined" color="secondary">
-              Sign out
-            </Button>
+            <Button color="secondary">Sign out</Button>
           </Link>
           <Divider
             className={classes.divider}
@@ -120,9 +117,7 @@ function Header(props) {
             to="/signin"
             style={{ textDecoration: "inherit", color: "inherit" }}
           >
-            <Button className={classes.menuButton} variant="outlined">
-              Sign in
-            </Button>
+            <Button className={classes.menuButton}>Sign in</Button>
           </Link>
           <Link
             to="/signup"
@@ -138,7 +133,7 @@ function Header(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar className={classes.appBar} position="absolute">
+      <AppBar className={classes.appBar} position="fixed">
         <Container maxWidth="lg">
           <Toolbar className={classes.toolbar}>
             <Typography
@@ -160,6 +155,7 @@ function Header(props) {
           </Toolbar>
         </Container>
       </AppBar>
+      <ScrollToTop />
       <div className={classes.appBarSpacer} />
     </div>
   );
