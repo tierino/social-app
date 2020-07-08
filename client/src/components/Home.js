@@ -18,6 +18,7 @@ import Box from "@material-ui/core/Box";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import Divider from "@material-ui/core/Divider";
 import HomeIcon from "@material-ui/icons/Home";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -45,10 +46,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Home(props) {
   const classes = useStyles();
-
-  useEffect(() => {
-    props.fetchPosts();
-  }, []);
 
   return (
     <div>

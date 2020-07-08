@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
@@ -13,6 +14,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import Avatar from "@material-ui/core/Avatar";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,12 +42,31 @@ const useStyles = makeStyles((theme) => ({
   menuContent: {
     color: "white",
   },
+  avatar: {
+    backgroundColor: "#ff8a80",
+    marginRight: theme.spacing(2),
+  },
+  accountButton: {
+    borderRadius: "26px",
+    paddingRight: theme.spacing(2),
+  },
 }));
 
 function AccountMenu(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+
+  // Signout dialog state
+  const [signoutDialogOpen, setSignoutDialogOpen] = React.useState(false);
+
+  const handleSignoutDialogOpen = (e) => {
+    setSignoutDialogOpen(true);
+  };
+
+  const handleSignoutDialogClose = (e) => {
+    setSignoutDialogOpen(false);
+  };
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -73,14 +99,36 @@ function AccountMenu(props) {
 
   return (
     <div className={classes.root}>
-      <IconButton
+      <Dialog
+        maxWidth="xs"
+        fullWidth={true}
+        open={signoutDialogOpen}
+        onClose={handleSignoutDialogClose}
+      >
+        <DialogTitle>Are you sure you want to sign out?</DialogTitle>
+
+        <Divider />
+        <DialogActions>
+          <Button onClick={handleSignoutDialogClose}>Cancel</Button>
+          <Link to="/signout" style={{ textDecoration: "none" }}>
+            <Button variant="contained" color="secondary">
+              Sign out
+            </Button>
+          </Link>
+        </DialogActions>
+      </Dialog>
+      <Button
+        className={classes.accountButton}
         ref={anchorRef}
         aria-controls={open ? "menu-list-grow" : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        <AccountCircleIcon fontSize="large" style={{ color: "#ff8a80" }} />
-      </IconButton>
+        <Avatar className={classes.avatar}>
+          {props.currentUser.charAt(0).toUpperCase()}
+        </Avatar>
+        {props.currentUser}
+      </Button>
       <Popper
         open={open}
         anchorEl={anchorRef.current}
@@ -114,14 +162,12 @@ function AccountMenu(props) {
                   >
                     My profile
                   </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link
-                      to="/signout"
-                      className={classes.menuContent}
-                      style={{ textDecoration: "inherit" }}
-                    >
-                      Sign out
-                    </Link>
+                  <MenuItem
+                    onClick={handleSignoutDialogOpen}
+                    className={classes.menuContent}
+                    style={{ textDecoration: "inherit" }}
+                  >
+                    Sign out
                   </MenuItem>
                 </MenuList>
               </ClickAwayListener>

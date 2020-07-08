@@ -29,9 +29,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
   },
-  image: {
-    marginTop: theme.spacing(4),
-  },
   form: {
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(4),

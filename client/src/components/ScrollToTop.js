@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     position: "fixed",
     top: theme.spacing(12),
     left: "calc(50vw - 70px)",
-    zIndex: 9999,
+    zIndex: 1100,
   },
   fab: {
     backgroundColor: "#ff8a80",
@@ -74,7 +74,6 @@ export default function BackToTop(props) {
         <Fab
           variant="extended"
           className={classes.fab}
-          color="#ff8a80"
           size="medium"
           aria-label="scroll back to top"
         >

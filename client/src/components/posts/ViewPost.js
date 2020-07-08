@@ -26,6 +26,7 @@ import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -148,13 +149,15 @@ function ViewPost(props) {
   return (
     <Box className={classes.box}>
       <Container className={classes.container} component="main" maxWidth="md">
-        <IconButton
+        <Button
+          style={{ marginTop: "12px" }}
           onClick={() => {
             props.history.goBack();
           }}
+          startIcon={<ArrowBackIcon />}
         >
-          <ArrowBackIcon fontSize="large" style={{ color: "#ff8a80" }} />
-        </IconButton>
+          Go back
+        </Button>
         {renderPost()}
       </Container>
     </Box>

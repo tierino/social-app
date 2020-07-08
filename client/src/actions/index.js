@@ -17,9 +17,6 @@ import {
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
-const db_port = process.env.PORT || 3090;
-const db_url = process.env.MONGO_DB_URI || `http://localhost:${db_port}`;
-
 /*****************************************************************************
  * AUTH ACTIONS
  *****************************************************************************/
@@ -28,6 +25,13 @@ const db_url = process.env.MONGO_DB_URI || `http://localhost:${db_port}`;
 export const signup = (formProps, callback) => async (dispatch) => {
   try {
     const response = await axios.post(`/signup`, formProps); //formProps has username and password
+
+    /* Uncomment for local development */
+
+    // const response = await axios.post(
+    //   `http://localhost:3090/signup`,
+    //   formProps
+    // );
 
     // Successful signup action, send web token in payload
     dispatch({
@@ -62,6 +66,13 @@ export const signout = () => {
 export const signin = (formProps, callback) => async (dispatch) => {
   try {
     const response = await axios.post(`/signin`, formProps); //formProps has username and password
+
+    /* Uncomment for local development */
+
+    // const response = await axios.post(
+    //   `http://localhost:3090/signin`,
+    //   formProps
+    // );
 
     // Successful signin action, send web token in payload
     dispatch({

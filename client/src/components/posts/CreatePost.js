@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(1),
   },
+  formContainer: {
+    marginRight: theme.spacing(16),
+    marginLeft: theme.spacing(16),
+  },
 }));
 
 const ColorButton = withStyles((theme) => ({
@@ -84,37 +88,39 @@ function CreatePost(props) {
 
   return (
     <Container className={classes.container}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Paper variant="outlined">
-          <Field
-            className={classes.textField}
-            rowsMax={20}
-            fullWidth
-            name="content"
-            component={renderTextField}
-            onChange={onChange}
-          />
-        </Paper>
-        <Button
-          className={classes.button}
-          onClick={() => {
-            setContent("");
-            dispatch(reset("newPost"));
-          }}
-          style={{ marginRight: "12px" }}
-          disabled={postContent.trim() === ""}
-        >
-          Clear
-        </Button>
-        <ColorButton
-          className={classes.button}
-          variant="contained"
-          onClick={handleSubmit(onSubmit)}
-          disabled={postContent.trim() === ""}
-        >
-          Post
-        </ColorButton>
-      </form>
+      <Container maxWidth="sm">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Paper variant="outlined">
+            <Field
+              className={classes.textField}
+              rowsMax={20}
+              fullWidth
+              name="content"
+              component={renderTextField}
+              onChange={onChange}
+            />
+          </Paper>
+          <Button
+            className={classes.button}
+            onClick={() => {
+              setContent("");
+              dispatch(reset("newPost"));
+            }}
+            style={{ marginRight: "12px" }}
+            disabled={postContent.trim() === ""}
+          >
+            Clear
+          </Button>
+          <ColorButton
+            className={classes.button}
+            variant="contained"
+            onClick={handleSubmit(onSubmit)}
+            disabled={postContent.trim() === ""}
+          >
+            Post
+          </ColorButton>
+        </form>
+      </Container>
     </Container>
   );
 }

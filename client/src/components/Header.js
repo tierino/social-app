@@ -92,20 +92,14 @@ function Header(props) {
       // User is signed in
       return (
         <div>
-          <Link
-            to="/home"
-            style={{ textDecoration: "inherit", color: "inherit" }}
-          >
-            <Button className={classes.menuButton}>Feed</Button>
-          </Link>
-          <Link to="/signout" style={{ textDecoration: "inherit" }}>
-            <Button color="secondary">Sign out</Button>
+          {/* <Link to="/signout" style={{ textDecoration: "inherit" }}>
+            <Button>Sign out</Button>
           </Link>
           <Divider
             className={classes.divider}
             variant="middle"
             orientation="vertical"
-          />
+          /> */}
           <AccountMenu />
         </div>
       );

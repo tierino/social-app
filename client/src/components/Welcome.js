@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { compose } from "redux";
 
 import { ReactComponent as Hello } from "../images/undraw_Hello_qnas.svg";
 import SignupCard from "./auth/SignupCard";
@@ -10,6 +12,7 @@ import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import withWidth from "@material-ui/core/withWidth";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -26,13 +29,21 @@ const useStyles = makeStyles((theme) => ({
 
     overflow: "auto",
   },
+  welcomeText: {
+    [theme.breakpoints.down("xs")]: {
+      textAlign: "center",
+    },
+  },
   container: {
     marginTop: theme.spacing(12),
+    [theme.breakpoints.down("xs")]: {
+      marginTop: theme.spacing(1),
+    },
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
     alignItems: "center",
   },
-  secondContainer: {
+  lowerContainer: {
     alignItems: "center",
     textAlign: "center",
   },
@@ -52,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Welcome(props) {
   const classes = useStyles();
+  const { width } = props;
 
   // Push to Home page if user is signed in when site loads
   useEffect(() => {
@@ -64,33 +76,43 @@ function Welcome(props) {
     <div>
       <Box className={classes.box}>
         <Container maxWidth="md" className={classes.container}>
-          <Grid container spacing={3} alignItems="center">
-            <Grid item xs={6}>
-              <Container>
-                <Typography variant="h2">Welcome!</Typography>
-                <Typography variant="h5">
-                  Sign in or create an account to get started!
-                </Typography>
-              </Container>
+          <Grid
+            container
+            spacing={3}
+            alignItems="center"
+            direction={width === "xs" ? "column" : "row"}
+          >
+            <Grid item xs={12} sm={5} md={6} className={classes.welcomeText}>
+              <Typography variant={width === "xs" ? "h4" : "h3"}>
+                Welcome!
+              </Typography>
+              <Typography variant={width === "xs" ? "h6" : "h5"}>
+                Sign in or create an account to get started.
+              </Typography>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={7} md={6}>
               <Paper className={classes.paper}>
                 <SignupCard history={props.history} />
               </Paper>
             </Grid>
           </Grid>
         </Container>
-        <Container
-          maxWidth="xl"
-          className={classes.secondContainer}
-        ></Container>
+        <Container maxWidth="xl" className={classes.lowerContainer}>
+          <Typography variant="subtitle1" style={{ color: "grey" }}>
+            See bottom right of screen for app info ˙ ͜ʟ˙
+          </Typography>
+        </Container>
       </Box>
     </div>
   );
 }
 
+Welcome.propTypes = {
+  width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
+};
+
 function mapStateToProps(state) {
   return { authenticated: state.auth.authenticated };
 }
 
-export default connect(mapStateToProps)(Welcome);
+export default compose(withWidth(), connect(mapStateToProps))(Welcome);

@@ -11,6 +11,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import InfiniteScroll from "react-infinite-scroll-component";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,13 +25,15 @@ const useStyles = makeStyles((theme) => ({
 // PostList only re-renders when the length of the posts array has changed, i.e.
 // a post has been added or deleted.
 function areEqual(prevProps, nextProps) {
-  return prevProps.posts.length === nextProps.posts.length;
+  return prevProps.posts === nextProps.posts;
 }
 
 function PostList(props) {
   const classes = useStyles();
 
-  console.log(props.posts);
+  useEffect(() => {
+    props.fetchPosts();
+  }, []);
 
   if (props.posts.length === 0) {
     return (
@@ -54,4 +57,6 @@ function mapStateToProps(state) {
   return { posts: Object.values(state.posts) };
 }
 
-export default connect(mapStateToProps)(React.memo(PostList, areEqual));
+export default connect(mapStateToProps, { fetchPosts })(
+  React.memo(PostList, areEqual)
+);

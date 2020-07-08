@@ -30,6 +30,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tooltip from "@material-ui/core/Tooltip";
 import Dialog from "@material-ui/core/Dialog";
 import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
 
 import { faCrown } from "@fortawesome/free-solid-svg-icons";
 
@@ -53,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     marginRight: theme.spacing(2),
-    color: "white",
+    backgroundColor: "#ff8a80",
   },
   adminButton: {
     marginLeft: theme.spacing(1),
@@ -83,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
 function Post(props) {
   const classes = useStyles();
 
-  // Likes/crowns state
+  // Likes state
   const [likedByUser, setLiked] = useState(
     props.post.likedBy.some((like) => like.userId === props.currentUserId)
   );
@@ -95,7 +100,24 @@ function Post(props) {
   // Comment dialog state
   const [commentDialogOpen, setCommentDialogOpen] = React.useState(false);
 
-  /* Delete dialog here as well */
+  const handleCommentDialogOpen = (e) => {
+    setCommentDialogOpen(true);
+  };
+
+  const handleCommentDialogClose = (e) => {
+    setCommentDialogOpen(false);
+  };
+
+  // Delete dialog state
+  const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
+
+  const handleDeleteDialogOpen = (e) => {
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteDialogClose = (e) => {
+    setDeleteDialogOpen(false);
+  };
 
   // Delete button
   const renderAdmin = () => {
@@ -106,15 +128,7 @@ function Post(props) {
           <Tooltip title="Delete this post">
             <IconButton
               className={classes.adminButton}
-              onClick={() => {
-                if (props.post.isComment) {
-                  props.removeCommentFromParent(
-                    props.post.parentId,
-                    props.post.id
-                  );
-                }
-                props.deletePost(props.post.id);
-              }}
+              onClick={handleDeleteDialogOpen}
             >
               <DeleteIcon />
             </IconButton>
@@ -124,18 +138,17 @@ function Post(props) {
     }
   };
 
-  const handleCommentDialogOpen = (e) => {
-    setCommentDialogOpen(true);
-  };
-
-  const handleCommentDialogClose = (e) => {
-    setCommentDialogOpen(false);
-  };
-
   const handlePostClick = (e) => {
     e.stopPropagation();
     // Go to post page (see comments)
     props.history.push(`/post/${props.post.id}`);
+  };
+
+  const handleDelete = () => {
+    if (props.post.isComment) {
+      props.removeCommentFromParent(props.post.parentId, props.post.id);
+    }
+    props.deletePost(props.post.id);
   };
 
   const handleLike = () => {
@@ -171,11 +184,6 @@ function Post(props) {
   return (
     <div className="item">
       <Dialog
-        style={{
-          //display: "flex",
-          //alignItems: "center",
-          justifyContent: "center",
-        }}
         maxWidth="sm"
         fullWidth={true}
         open={commentDialogOpen}
@@ -187,6 +195,21 @@ function Post(props) {
           numComments={numComments}
           incrementComments={setNumComments}
         />
+      </Dialog>
+      <Dialog
+        maxWidth="xs"
+        fullWidth={true}
+        open={deleteDialogOpen}
+        onClose={handleDeleteDialogClose}
+      >
+        <DialogTitle>Permanently delete this post?</DialogTitle>
+        <Divider />
+        <DialogActions>
+          <Button onClick={handleDeleteDialogClose}>Cancel</Button>
+          <Button variant="contained" color="secondary" onClick={handleDelete}>
+            Delete
+          </Button>
+        </DialogActions>
       </Dialog>
       <Card
         className={props.post.isComment ? classes.commentCard : classes.card}
