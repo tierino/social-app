@@ -56,6 +56,7 @@ const renderTextField = ({ label, input, ...custom }) => (
     variant="outlined"
     label={label}
     fullWidth
+    autoComplete="new-password"
     margin="normal"
     placeholder={label}
     {...input}
@@ -130,7 +131,6 @@ function SignupCard(props) {
             name="username"
             component={renderTextField}
             label="Username"
-            autoComplete="off"
             helperText={usernameError}
             inputProps={{
               maxLength: MAX_UN_LEN,

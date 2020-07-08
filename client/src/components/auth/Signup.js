@@ -64,6 +64,7 @@ const renderTextField = ({
 }) => (
   <TextField
     variant="outlined"
+    autoComplete="off"
     label={label}
     fullWidth
     margin="normal"
@@ -146,7 +147,6 @@ function Signup(props) {
             name="username"
             component={renderTextField}
             label="Username"
-            autoComplete="off"
             helperText={usernameError}
             inputProps={{
               maxLength: MAX_UN_LEN,
