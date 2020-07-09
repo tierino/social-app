@@ -10,8 +10,8 @@ export default ({ children }) => {
       createMuiTheme({
         palette: {
           type: "dark",
-          primary: "ff8a80",
-          secondary: "#ff1744",
+          primary: { main: "ff8a80" },
+          secondary: { main: "#ff1744" },
         },
       }),
     []
