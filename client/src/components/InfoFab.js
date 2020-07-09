@@ -44,7 +44,7 @@ function InfoFab() {
         open={infoDialogOpen}
         onClose={handleInfoDialogClose}
       >
-        <DialogTitle>App information</DialogTitle>
+        <DialogTitle>APP INFORMATION</DialogTitle>
         <Divider />
         <DialogContent>
           <DialogContentText>

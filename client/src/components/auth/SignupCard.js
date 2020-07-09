@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 // Field renderer so Material-UI works with Redux Form
 const renderTextField = ({ label, input, ...custom }) => (
   <TextField
-    variant="outlined"
     label={label}
     fullWidth
     autoComplete="new-password"

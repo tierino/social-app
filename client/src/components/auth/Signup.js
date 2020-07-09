@@ -63,8 +63,7 @@ const renderTextField = ({
   ...custom
 }) => (
   <TextField
-    variant="outlined"
-    autoComplete="off"
+    autoComplete="new-password"
     label={label}
     fullWidth
     margin="normal"

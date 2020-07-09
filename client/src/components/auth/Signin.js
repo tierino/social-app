@@ -63,7 +63,6 @@ const renderTextField = ({
   ...custom
 }) => (
   <TextField
-    variant="outlined"
     label={label}
     fullWidth
     margin="normal"
