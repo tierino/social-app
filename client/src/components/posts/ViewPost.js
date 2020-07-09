@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     marginTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
     alignItems: "center",
   },
   loaderContainer: {
@@ -89,6 +90,8 @@ function ViewPost(props) {
   const classes = useStyles();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     props.fetchPosts();
 
     const { id } = props.match.params;

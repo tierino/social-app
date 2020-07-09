@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useLocation } from "react-router-dom";
+
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -58,22 +60,25 @@ ScrollTop.propTypes = {
 };
 
 export default function BackToTop(props) {
-  const classes = useStyles();
-
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <Toolbar id="back-to-top-anchor" />
-      <ScrollTop {...props}>
-        <Fab
-          variant="extended"
-          color="primary"
-          size="medium"
-          aria-label="scroll back to top"
-        >
-          BACK TO TOP
-        </Fab>
-      </ScrollTop>
-    </React.Fragment>
-  );
+  // Only show if at home page
+  if (useLocation().pathname === "/home") {
+    return (
+      <React.Fragment>
+        <CssBaseline />
+        <Toolbar id="back-to-top-anchor" />
+        <ScrollTop {...props}>
+          <Fab
+            variant="extended"
+            color="primary"
+            size="medium"
+            aria-label="scroll back to top"
+          >
+            BACK TO TOP
+          </Fab>
+        </ScrollTop>
+      </React.Fragment>
+    );
+  } else {
+    return null;
+  }
 }
