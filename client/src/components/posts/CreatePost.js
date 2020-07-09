@@ -2,60 +2,53 @@ import React, { useState } from "react";
 import { Field, reduxForm, reset } from "redux-form";
 import { compose } from "redux";
 import { connect, useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
 import { createPost } from "../../actions";
 
-import {
-  makeStyles,
-  ThemeProvider,
-  withStyles,
-  createMuiTheme,
-} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import InputBase from "@material-ui/core/InputBase";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import CheckSharpIcon from "@material-ui/icons/CheckSharp";
-import ClearIcon from "@material-ui/icons/Clear";
-import IconButton from "@material-ui/core/IconButton";
-import SendIcon from "@material-ui/icons/Send";
+import AvatarIcon from "@material-ui/core/Avatar";
+import withWidth from "@material-ui/core/withWidth";
+import CreateIcon from "@material-ui/icons/Create";
+import Hidden from "@material-ui/core/Hidden";
+
+const MAX_POST_LEN = 2000;
 
 const useStyles = makeStyles((theme) => ({
   container: {
     padding: "0px",
-    textAlign: "right",
     marginBottom: theme.spacing(3),
   },
-  textField: {
-    padding: theme.spacing(2),
+  formContainer: {
+    textAlign: "right",
+    padding: 0,
+  },
+  inputAndIconContainer: {
+    padding: 0,
+    textAlign: "left",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
   },
   button: {
     marginTop: theme.spacing(1),
   },
-  formContainer: {
-    marginRight: theme.spacing(16),
-    marginLeft: theme.spacing(16),
+  paper: {
+    padding: theme.spacing(1),
+    flexGrow: 2,
   },
 }));
-
-const ColorButton = withStyles((theme) => ({
-  root: {
-    color: "#212121",
-    backgroundColor: "#ff8a80",
-    "&:hover": {
-      backgroundColor: "#ff5252",
-    },
-  },
-}))(Button);
 
 // Field renderer so Material-UI works with Redux Form
 const renderTextField = ({ input, meta: { touched, invalid }, ...custom }) => (
   <InputBase
-    variant="outlined"
     multiline
-    autoComplete="off"
+    autoComplete="new-password"
     placeholder="Write a new post"
     error={touched && invalid}
     {...input}
@@ -87,21 +80,32 @@ function CreatePost(props) {
   };
 
   return (
-    <Container className={classes.container}>
-      <Container maxWidth="sm">
+    <Container className={classes.container} maxWidth="sm">
+      <Container className={classes.formContainer} maxWidth="sm">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Paper variant="outlined">
-            <Field
-              className={classes.textField}
-              rowsMax={20}
-              fullWidth
-              name="content"
-              component={renderTextField}
-              onChange={onChange}
-            />
-          </Paper>
+          <Container className={classes.inputAndIconContainer} maxWidth="sm">
+            <Hidden smDown>
+              <CreateIcon
+                style={{ color: "grey", marginRight: "16px" }}
+                fontSize="large"
+              />
+            </Hidden>
+            <Paper className={classes.paper} variant="outlined">
+              <Field
+                rowsMax={20}
+                fullWidth
+                name="content"
+                component={renderTextField}
+                inputProps={{
+                  maxLength: MAX_POST_LEN,
+                }}
+                onChange={onChange}
+              />
+            </Paper>
+          </Container>
           <Button
             className={classes.button}
+            size="large"
             onClick={() => {
               setContent("");
               dispatch(reset("newPost"));
@@ -111,21 +115,28 @@ function CreatePost(props) {
           >
             Clear
           </Button>
-          <ColorButton
+          <Button
             className={classes.button}
+            size="large"
+            color="primary"
             variant="contained"
             onClick={handleSubmit(onSubmit)}
             disabled={postContent.trim() === ""}
           >
             Post
-          </ColorButton>
+          </Button>
         </form>
       </Container>
     </Container>
   );
 }
 
+CreatePost.propTypes = {
+  width: PropTypes.oneOf(["lg", "md", "sm", "xl", "xs"]).isRequired,
+};
+
 export default compose(
+  withWidth(),
   connect(null, { createPost }),
   reduxForm({ form: "newPost" })
 )(CreatePost);

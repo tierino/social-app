@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(4),
-    alignItems: "center",
   },
   box: {
     display: "flex",

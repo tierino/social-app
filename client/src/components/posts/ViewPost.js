@@ -110,17 +110,17 @@ function ViewPost(props) {
       .reverse()
       .map((commentId) => {
         // Weird syntax but prevents undefined error when deleting a comment on a post
-        if (props.posts[commentId] !== undefined) {
-          return (
-            <Post
-              post={props.posts[commentId]}
-              key={commentId}
-              history={props.history}
-            >
-              {commentId}
-            </Post>
-          );
-        }
+        // if (props.posts[commentId] !== undefined) {
+        return (
+          <Post
+            post={props.posts[commentId]}
+            key={commentId}
+            history={props.history}
+          >
+            {commentId}
+          </Post>
+        );
+        // }
       });
   };
 

@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     background: "#212121",
   },
   menuButton: {
-    marginRight: 12,
+    marginRight: theme.spacing(2),
   },
   menuButtonHidden: {
     display: "none",
@@ -67,16 +67,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ColorButton = withStyles((theme) => ({
-  root: {
-    color: "#212121",
-    backgroundColor: "#ff8a80",
-    "&:hover": {
-      backgroundColor: "#ff5252",
-    },
-  },
-}))(Button);
-
 function Header(props) {
   const classes = useStyles();
   let homeLink = "";
@@ -107,17 +97,13 @@ function Header(props) {
       // User is not signed in
       return (
         <Typography>
-          <Link
-            to="/signin"
-            style={{ textDecoration: "inherit", color: "inherit" }}
-          >
+          <Link to="/signin" style={{ textDecoration: "none" }}>
             <Button className={classes.menuButton}>Sign in</Button>
           </Link>
-          <Link
-            to="/signup"
-            style={{ textDecoration: "inherit", color: "inherit" }}
-          >
-            <ColorButton variant="contained">Sign up</ColorButton>
+          <Link to="/signup" style={{ textDecoration: "none" }}>
+            <Button color="primary" variant="contained">
+              Sign up
+            </Button>
           </Link>
         </Typography>
       );
@@ -136,10 +122,7 @@ function Header(props) {
               noWrap
               className={classes.title}
             >
-              <Link
-                to={homeLink}
-                style={{ textDecoration: "inherit", color: "inherit" }}
-              >
+              <Link to={homeLink}>
                 <IconButton className={classes.homeButton} disableRipple>
                   <Octopus style={{ width: "60px", height: "60px" }} />
                 </IconButton>

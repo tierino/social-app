@@ -44,14 +44,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   textField: {
-    "& label.Mui-focused": {
-      color: "#4791db",
-    },
-    "& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: "#4791db",
-      },
-    },
     "&:-webkit-autofill": {
       WebkitBoxShadow: "0 0 0 1000px black inset",
     },
@@ -69,6 +61,7 @@ const renderTextField = ({
     autoComplete="new-password"
     label={label}
     fullWidth
+    variant="filled"
     margin="normal"
     placeholder={label}
     error={touched && invalid}
@@ -77,16 +70,6 @@ const renderTextField = ({
     {...custom}
   />
 );
-
-const ColorButton = withStyles((theme) => ({
-  root: {
-    color: "#212121",
-    backgroundColor: "#ff8a80",
-    "&:hover": {
-      backgroundColor: "#ff5252",
-    },
-  },
-}))(Button);
 
 function Signup(props) {
   const dispatch = useDispatch();
@@ -179,7 +162,12 @@ function Signup(props) {
             </Link>
             .
           </Typography>
-          <Button type="submit" color="primary" variant="contained">
+          <Button
+            className={classes.submit}
+            type="submit"
+            color="primary"
+            variant="contained"
+          >
             Sign up
           </Button>
         </form>

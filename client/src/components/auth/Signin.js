@@ -44,16 +44,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   textField: {
-    "& label.Mui-focused": {
-      color: "#4791db",
-    },
-    "& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: "#4791db",
-      },
-    },
     "&:-webkit-autofill": {
-      WebkitBoxShadow: "0 0 0 1000px black inset",
+      WebkitBoxShadow: "0 0 0px 1000px black inset !important",
     },
   },
 }));
@@ -68,6 +60,7 @@ const renderTextField = ({
   <TextField
     label={label}
     fullWidth
+    variant="filled"
     margin="normal"
     placeholder={label}
     error={touched && invalid}

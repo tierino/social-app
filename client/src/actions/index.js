@@ -24,14 +24,14 @@ require("dotenv").config();
 // Redux Thunk allows us to return either an action object (as usual) or a function
 export const signup = (formProps, callback) => async (dispatch) => {
   try {
-    const response = await axios.post(`/signup`, formProps); //formProps has username and password
+    // const response = await axios.post(`/signup`, formProps); //formProps has username and password
 
-    /* Uncomment for local development */
+    /* Uncomment below for local development */
 
-    // const response = await axios.post(
-    //   `http://localhost:3090/signup`,
-    //   formProps
-    // );
+    const response = await axios.post(
+      `http://localhost:3090/signup`,
+      formProps
+    );
 
     // Successful signup action, send web token in payload
     dispatch({
@@ -65,14 +65,14 @@ export const signout = () => {
 
 export const signin = (formProps, callback) => async (dispatch) => {
   try {
-    const response = await axios.post(`/signin`, formProps); //formProps has username and password
+    // const response = await axios.post(`/signin`, formProps); //formProps has username and password
 
-    /* Uncomment for local development */
+    /* Uncomment below for local development */
 
-    // const response = await axios.post(
-    //   `http://localhost:3090/signin`,
-    //   formProps
-    // );
+    const response = await axios.post(
+      `http://localhost:3090/signin`,
+      formProps
+    );
 
     // Successful signin action, send web token in payload
     dispatch({

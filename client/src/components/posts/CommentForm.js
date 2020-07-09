@@ -48,22 +48,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ColorButton = withStyles((theme) => ({
-  root: {
-    color: "#212121",
-    backgroundColor: "#ff8a80",
-    "&:hover": {
-      backgroundColor: "#ff5252",
-    },
-  },
-}))(Button);
-
 // Field renderer so Material-UI works with Redux Form
 const renderTextField = ({ input, meta: { touched, invalid }, ...custom }) => (
   <InputBase
     variant="outlined"
     multiline
-    autoComplete="off"
+    autoComplete="new-password"
     placeholder="Write a new comment"
     error={touched && invalid}
     {...input}
@@ -92,7 +82,7 @@ function CommentForm(props) {
       props.addCommentToParent(props.parentPost.id, commentId);
       props.createPost(formProps, commentId, props.parentPost.id);
       props.handleClose();
-      // props.incrementComments(props.numComments + 1);
+      props.incrementComments(props.numComments + 1);
     }
     // Clear the form after submission
     dispatch(reset("newComment"));
@@ -128,14 +118,15 @@ function CommentForm(props) {
         >
           Cancel
         </Button>
-        <ColorButton
+        <Button
           className={classes.button}
+          color="primary"
           variant="contained"
           onClick={handleSubmit(onSubmit)}
           disabled={postContent.trim() === ""}
         >
           Post
-        </ColorButton>
+        </Button>
       </DialogActions>
     </Container>
   );

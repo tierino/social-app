@@ -22,8 +22,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// PostList only re-renders when the length of the posts array has changed, i.e.
-// a post has been added or deleted.
 function areEqual(prevProps, nextProps) {
   return prevProps.posts === nextProps.posts;
 }

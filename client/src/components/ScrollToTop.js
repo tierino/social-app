@@ -18,12 +18,6 @@ const useStyles = makeStyles((theme) => ({
     left: "calc(50vw - 70px)",
     zIndex: 1100,
   },
-  fab: {
-    backgroundColor: "#ff8a80",
-    "&:hover": {
-      backgroundColor: "#ff5252",
-    },
-  },
 }));
 
 function ScrollTop(props) {
@@ -73,7 +67,7 @@ export default function BackToTop(props) {
       <ScrollTop {...props}>
         <Fab
           variant="extended"
-          className={classes.fab}
+          color="primary"
           size="medium"
           aria-label="scroll back to top"
         >

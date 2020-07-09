@@ -146,9 +146,15 @@ function Post(props) {
 
   const handleDelete = () => {
     if (props.post.isComment) {
-      props.removeCommentFromParent(props.post.parentId, props.post.id);
+      // async/await prevents undefined error when ViewPost renders
+      async function deleteComment() {
+        await props.removeCommentFromParent(props.post.parentId, props.post.id);
+        props.deletePost(props.post.Id);
+      }
+      deleteComment();
+    } else {
+      props.deletePost(props.post.id);
     }
-    props.deletePost(props.post.id);
   };
 
   const handleLike = () => {
