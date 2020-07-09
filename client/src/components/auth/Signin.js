@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
         borderColor: "#4791db",
       },
     },
+    "&:-webkit-autofill": {
+      WebkitBoxShadow: "0 0 0 1000px black inset",
+    },
   },
 }));
 

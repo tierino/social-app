@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
         borderColor: "#4791db",
       },
     },
+    "&:-webkit-autofill": {
+      WebkitBoxShadow: "0 0 0 1000px black inset",
+    },
   },
 }));
 
@@ -159,13 +162,9 @@ function SignupCard(props) {
             </Link>
             .
           </Typography>
-          <ColorButton
-            type="submit"
-            className={classes.submit}
-            variant="contained"
-          >
+          <Button type="submit" color="primary" variant="contained">
             Sign up
-          </ColorButton>
+          </Button>
         </form>
       </div>
     </Container>

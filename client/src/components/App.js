@@ -10,18 +10,18 @@ export default ({ children }) => {
       createMuiTheme({
         palette: {
           type: "dark",
+          primary: "ff8a80",
+          secondary: "#ff1744",
         },
       }),
     []
   );
 
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-        <Header />
-        <InfoFab />
-        {children}
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Header />
+      <InfoFab />
+      {children}
+    </ThemeProvider>
   );
 };
