@@ -18,10 +18,12 @@ export default ({ children }) => {
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <InfoFab />
-      {children}
-    </ThemeProvider>
+    <div>
+      <ThemeProvider theme={theme}>
+        <Header />
+        <InfoFab />
+        {children}
+      </ThemeProvider>
+    </div>
   );
 };
