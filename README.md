@@ -1,5 +1,9 @@
 # My Social App
-This is a simple MERN social media application with a fake REST API (json-server) containing posts and a MongoDB authentication server. Authentication is done with Passport.js, with users stored in a Mongo database. Posts are stored in a fake REST API (json-server) which refreshes whenever the app sleeps or about every 24 hours. Uses Redux for state management. The application contains post, delete, like and reply functionalities. Hosted by Heroku. Styled with Material UI.
+This is a simple MERN social media application with a fake REST API (json-server) containing posts and a MongoDB authentication server. Authentication is done with Passport.js, with users stored in a Mongo database. 
+
+Posts are stored in a fake REST API (json-server) which refreshes whenever the app sleeps or about every 24 hours. Uses Redux for state management. The application contains post, delete, like and reply functionalities. 
+
+Hosted by Heroku. Styled with Material UI.
 
 ## Signing up
 
