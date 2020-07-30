@@ -1,6 +1,9 @@
 # My Social App 
-![alt text](https://raw.githubusercontent.com/tomierino/deployed-social-app/master/client/src/images/octopus.svg)
 #### See the deployed application [here](https://fathomless-hollows-55304.herokuapp.com/).
+
+<p align="center">
+  <img width="100" height="100" src="https://raw.githubusercontent.com/tomierino/deployed-social-app/master/client/src/images/octopus.svg">
+</p>
 
 This is a simple MERN social media application with a fake REST API (json-server) containing posts and a MongoDB authentication server. Authentication is done with Passport.js, with users stored in a Mongo database. Posts are stored in a fake REST API (json-server) which refreshes whenever the app sleeps or about every 24 hours. 
 
