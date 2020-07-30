@@ -7,7 +7,7 @@ Hosted by Heroku. Styled with Material UI.
 
 ## Signing up
 
-Sign up with a unique username and strong password (no email required!). Passwords are encrypted in the MongoDB database. You can sign back in with these credentials at any point, given your account hasn't been deleted.
+Sign up with a unique username and strong password (no email required!). Passwords are encrypted in the database. You can sign back in with these credentials at any point, given your account hasn't been deleted.
 
 ## Posting
 
