@@ -1,9 +1,10 @@
-# My Social App
-This is a simple MERN social media application with a fake REST API (json-server) containing posts and a MongoDB authentication server. Authentication is done with Passport.js, with users stored in a Mongo database. 
+# My Social App 
+![alt text](https://raw.githubusercontent.com/tomierino/deployed-social-app/master/client/src/images/octopus.svg)
+#### See the deployed application [here](https://fathomless-hollows-55304.herokuapp.com/).
 
-Posts are stored in a fake REST API (json-server) which refreshes whenever the app sleeps or about every 24 hours. Uses Redux for state management. The application contains post, delete, like and reply functionalities. 
+This is a simple MERN social media application with a fake REST API (json-server) containing posts and a MongoDB authentication server. Authentication is done with Passport.js, with users stored in a Mongo database. Posts are stored in a fake REST API (json-server) which refreshes whenever the app sleeps or about every 24 hours. 
 
-Hosted by Heroku. Styled with Material UI.
+Uses Redux for state management. The application contains post, delete, like and reply functionalities. Hosted by Heroku. Styled using Material UI, with a responsive and **mobile-friendly** design.
 
 ## Signing up
 
@@ -11,6 +12,6 @@ Sign up with a unique username and strong password (no email required!). Passwor
 
 ## Posting
 
-Feel free to create a new post, or explore and interact with the existing posts by clicking on them. Clicking on a post will show all of its direct comments.
+Feel free to create a new post/comment or explore and interact with the existing posts by clicking on them. Clicking on a post will show all of its direct comments.
 
-#### Note: loading up the site initially may take a while--this is just Heroku waking up the app.
+*__Note:__ loading up the site initially may take a while--this is just Heroku waking up the app.*
