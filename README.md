@@ -13,5 +13,4 @@ Sign up with a unique username and strong password (no email required!). Passwor
 
 Feel free to create a new post, or explore and interact with the existing posts by clicking on them. Clicking on a post will show all of its direct comments.
 
-#### Note: due to the nature of Heroku, the fake posts API will reset whenever the app sleeps, or about every 24 hours.
-#### Another note: loading up the site initially may take a while--this is just Heroku waking upp the app.
+#### Note: loading up the site initially may take a while--this is just Heroku waking upp the app.
