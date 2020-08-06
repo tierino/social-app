@@ -90,6 +90,7 @@ function ViewPost(props) {
   const classes = useStyles();
 
   useEffect(() => {
+    // Prevents bug where previous scroll position persists when clicking a post.
     window.scrollTo(0, 0);
 
     props.fetchPosts();
@@ -101,6 +102,7 @@ function ViewPost(props) {
   }, []);
 
   const renderComments = () => {
+    // If no comments, display a message
     if (props.post.commentIds.length === 0) {
       return (
         <Container className={classes.loaderContainer}>
@@ -108,12 +110,13 @@ function ViewPost(props) {
         </Container>
       );
     }
+    // Else, iterate over the posts commentIds, displaying each corresponding comment.
+    // Storing every posts comment Ids allows this, which is faster than looping through
+    // all posts to find which are comments of the current viewed post.
     return props.post.commentIds
       .slice(0)
       .reverse()
       .map((commentId) => {
-        // Weird syntax but prevents undefined error when deleting a comment on a post
-        // if (props.posts[commentId] !== undefined) {
         return (
           <Post
             post={props.posts[commentId]}
@@ -123,11 +126,11 @@ function ViewPost(props) {
             {commentId}
           </Post>
         );
-        // }
       });
   };
 
   const renderPost = () => {
+    // Display loader when post hasn't been fetched from fake API yet.
     if (!props.post) {
       return (
         <Container className={classes.loaderContainer}>

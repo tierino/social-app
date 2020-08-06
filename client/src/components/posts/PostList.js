@@ -41,6 +41,8 @@ function PostList(props) {
     );
   }
 
+  // Would like to refactor this into an infinite scroll component
+
   return props.posts
     .slice(0)
     .reverse() // Make newest posts show at the top

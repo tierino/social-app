@@ -1,3 +1,7 @@
+/* This component exists to render the currently viewed post (i.e. after clicking on it)
+   differently to other posts or comments. Could be a better way to do this than a completely
+   separate component. */
+
 import React, { useState } from "react";
 import { Field, reduxForm, reset } from "redux-form";
 import { compose } from "redux";
@@ -128,12 +132,6 @@ function FocusedPost(props) {
     setCommentDialogOpen(false);
   };
 
-  const handlePostClick = (e) => {
-    e.stopPropagation();
-    // Go to post page (see comments)
-    props.history.push(`/post/${props.post.id}`);
-  };
-
   const handleLike = () => {
     props.toggleReaction(
       props.post.id,
@@ -147,6 +145,7 @@ function FocusedPost(props) {
       setLiked(true);
       setNumLikes(numLikes + 1);
     } else {
+      // Unlike
       setLiked(false);
       setNumLikes(numLikes - 1);
     }
@@ -154,10 +153,6 @@ function FocusedPost(props) {
 
   const likeButtonColor = () => {
     return likedByUser ? "#ff128c" : "white";
-  };
-
-  const crownButtonColor = () => {
-    return;
   };
 
   const getDateStr = () => {
@@ -168,8 +163,6 @@ function FocusedPost(props) {
     <div className="item">
       <Dialog
         style={{
-          //display: "flex",
-          //alignItems: "center",
           justifyContent: "center",
         }}
         maxWidth="sm"
@@ -235,15 +228,6 @@ function FocusedPost(props) {
           >
             {numComments}
           </Typography>
-          {/* <Tooltip title="Crown this post">
-            <IconButton style={{ marginRight: "auto" }}>
-              <FontAwesomeIcon
-                className={classes.crownIcon}
-                icon={faCrown}
-                size="xs"
-              />
-            </IconButton>
-          </Tooltip> */}
           {renderAdmin()}
         </CardActions>
       </Card>

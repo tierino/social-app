@@ -32,13 +32,6 @@ export const signup = (formProps, callback) => async (dispatch) => {
 
     const response = await axios.post(`${baseURL}/signup`, formProps); //formProps has username and password
 
-    /* Uncomment below for local development */
-
-    // const response = await axios.post(
-    //   `http://localhost:3090/signup`,
-    //   formProps
-    // );
-
     // Successful signup action, send web token in payload
     dispatch({
       type: AUTH_USER,
@@ -78,13 +71,6 @@ export const signin = (formProps, callback) => async (dispatch) => {
     }
 
     const response = await axios.post(`${baseURL}/signin`, formProps); //formProps has username and password
-
-    /* Uncomment below for local development */
-
-    // const response = await axios.post(
-    //   `http://localhost:3090/signin`,
-    //   formProps
-    // );
 
     // Successful signin action, send web token in payload
     dispatch({

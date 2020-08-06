@@ -6,23 +6,14 @@ import AccountMenu from "./AccountMenu";
 import { ReactComponent as Octopus } from "../images/octopus.svg";
 import ScrollToTop from "./ScrollToTop";
 
-import clsx from "clsx";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Button from "@material-ui/core/Button";
-import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
 import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import Divider from "@material-ui/core/Divider";
-import HomeSharpIcon from "@material-ui/icons/HomeSharp";
 
 const useStyles = makeStyles((theme) => ({
   root: {

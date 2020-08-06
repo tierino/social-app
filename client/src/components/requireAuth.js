@@ -1,5 +1,4 @@
 // This is a HOC that ensures the user must be signed in to access '/home'
-// requireAuth (lowercase) because we're exporting a function
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
