@@ -69,9 +69,10 @@ function InfoFab() {
             .
             <br /> <br />
             This is a simple MERN social media application with a fake REST API
-            (json-server) containing posts and a MongoDB authentication server.
-            The application contains post, delete, like and reply
-            functionalities. Hosted by Heroku. Styled with Material UI.
+            (json-server) containing posts and a separate authentication server
+            that stores users in a MongoDB database. The application contains
+            post, delete, like and reply functionalities. Hosted by Heroku.
+            Styled with Material UI.
             <br /> <br />
             <Typography variant="subtitle1">SIGNING UP</Typography> <br /> Sign
             up with a unique username and strong password. Passwords are
