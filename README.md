@@ -1,4 +1,4 @@
-# My Social App 
+# social-app
 
 A simple MERN social media app with authentication, posting, commenting, and liking. 
 
