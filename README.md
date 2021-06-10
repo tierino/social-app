@@ -4,5 +4,5 @@ A simple MERN social media app with authentication, posting, commenting, and lik
 
 ### Inclusions
 - MERN stack
-- Passportjs
+- [Passport](https://github.com/jaredhanson/passport)
 - Material UI
